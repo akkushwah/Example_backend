@@ -22,6 +22,19 @@ app.get('/services', (req, res) => {
 })
 
 app.get('/courses', (req, res) => {
+
+  const data = [
+    { id: 1, course: "MEAN" },
+    { id: 2, course: "MERN" },
+    { id: 3, course: "MERP" },
+    { id: 4, course: "DSA" },
+    { id: 5, course: "UI/UX" },
+  ]
+  res.send(data)
+
+})
+
+app.get('/todos', (req, res) => {
   fetch('https://jsonplaceholder.typicode.com/todos')
     .then(response => response.json())
     .then(data => {
@@ -30,13 +43,6 @@ app.get('/courses', (req, res) => {
       // console.log("Tododata", Tododata)
     }
     )
-  // const data = [
-  //   { id: 1, course: "MEAN" },
-  //   { id: 2, course: "MERN" },
-  //   { id: 3, course: "MERP" },
-  //   { id: 4, course: "DSA" },
-  //   { id: 5, course: "UI/UX" },
-  // ]
 })
 
 app.listen(port, () => {
