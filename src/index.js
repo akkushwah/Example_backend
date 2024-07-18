@@ -10,6 +10,8 @@ const hostname = process.env.HOSTNAME;
 
 app.use(cors())
 
+let TodoData = []
+
 app.get('/', (req, res) => {
   const name = "Akanksha"
   res.send(`Hello from home, ${name}`)
@@ -20,14 +22,21 @@ app.get('/services', (req, res) => {
 })
 
 app.get('/courses', (req, res) => {
-  const data = [
-    { id: 1, course: "MEAN" },
-    { id: 2, course: "MERN" },
-    { id: 3, course: "MERP" },
-    { id: 4, course: "DSA" },
-    { id: 5, course: "UI/UX" },
-  ]
-  res.send(data)
+  fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(response => response.json())
+    .then(data => {
+      TodoData = data;
+      res.send(data)
+      // console.log("Tododata", Tododata)
+    }
+    )
+  // const data = [
+  //   { id: 1, course: "MEAN" },
+  //   { id: 2, course: "MERN" },
+  //   { id: 3, course: "MERP" },
+  //   { id: 4, course: "DSA" },
+  //   { id: 5, course: "UI/UX" },
+  // ]
 })
 
 app.listen(port, () => {
