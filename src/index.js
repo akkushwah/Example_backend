@@ -25,6 +25,7 @@ app.get('/courses', (req, res) => {
     { id: 2, course: "MERN" },
     { id: 3, course: "MERP" },
     { id: 4, course: "DSA" },
+    { id: 5, course: "UI/UX" },
   ]
   res.send(data)
 })
